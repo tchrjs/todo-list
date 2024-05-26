@@ -8,6 +8,7 @@ export default function Home() {
     const [tasks, setTasks] = useState([]);
     const [currentTask, setCurrentTask] = useState("");
     const [isDrawerActive, setDrawerActive] = useState(false);
+    const [isTransitionCompleted, setTransitionCompleted] = useState(false);
 
     const handleChange = (event) => {
         if (event.key === "Enter") handleSubmit();
@@ -20,6 +21,10 @@ export default function Home() {
             alert("This exists.");
         else setTasks([...tasks, { description: currentTask }]);
         setCurrentTask("");
+    };
+
+    const handleTransitionEnd = () => {
+        setTransitionCompleted(isDrawerActive);
     };
 
     return (
@@ -67,7 +72,7 @@ export default function Home() {
             </div>
             <div
                 className={`fixed w-full ${
-                    isDrawerActive
+                    isTransitionCompleted
                         ? "pointer-events-all"
                         : "pointer-events-none"
                 }`}
@@ -84,6 +89,7 @@ export default function Home() {
                     className={`fixed w-full h-5/6 bottom-0 bg-white flex flex-col items-center rounded-t-xl ${
                         isDrawerActive ? "translate-y-0" : "translate-y-full"
                     } transition-transform duration-500`}
+                    onTransitionEnd={handleTransitionEnd}
                 >
                     <div className="w-12 h-2 bg-gray-300 rounded-lg my-2"></div>
                     <h1 className="">add a tasks here</h1>
