@@ -23,7 +23,7 @@ export default function Home() {
     };
 
     return (
-        <main className="w-full h-screen flex flex-col">
+        <main className="w-full h-screen flex flex-col overflow-hidden">
             <div className="w-full flex justify-center items-center px-4">
                 <div className="w-1/3"></div>
                 <h1 className="w-1/3 p-4 text-lg underline flex flex-col items-center text-nowrap">
