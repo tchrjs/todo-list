@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { GoPlus } from "react-icons/go";
 
 export default function Drawer(props) {
-    const [isDrawerActive, setDrawerActive] = useState(true);
+    const [isDrawerActive, setDrawerActive] = useState(false);
 
     props.hello();
 

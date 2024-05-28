@@ -5,7 +5,20 @@ import Task from "./components/task";
 import Drawer from "./components/drawer";
 
 export default function Home() {
-    const [tasks, setTasks] = useState([]);
+    const [tasks, setTasks] = useState([
+        {
+            title: "Cheddar Quest Keno",
+            type: "Task",
+            priority: "",
+            description: "",
+        },
+        {
+            title: "Bomber Girls Keno",
+            type: "",
+            priority: "",
+            description: "This is a description.",
+        },
+    ]);
     const [currentTask, setCurrentTask] = useState("");
 
     const handleChange = (event) => {
@@ -51,13 +64,11 @@ export default function Home() {
                     submit
                 </button>
             </div>
-            <div className="w-full h-fit flex flex-col items-center px-8 py-4 mt-4 mb-16 bg-blue-50 gap-2 overflow-auto hover:overflow-scroll">
+            <div className="w-full h-fit flex flex-col items-center px-8 py-4 mt-4 mb-16 gap-2 overflow-auto hover:overflow-scroll">
                 {tasks.length === 0 ? (
                     <p className="text-gray-500">task list is empty</p>
                 ) : (
-                    tasks.map((task) => (
-                        <Task title={task.title} key={task.title} />
-                    ))
+                    tasks.map((task, i) => <Task task={task} key={i} />)
                 )}
             </div>
         </main>
