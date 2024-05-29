@@ -32,11 +32,25 @@ export default function Drawer(props) {
                     }}
                 />
                 <div
-                    className={`fixed w-full h-5/6 bottom-0 bg-white flex flex-col items-center rounded-t-xl ${
+                    className={`fixed w-full h-5/6 bottom-0 bg-white  flex flex-col items-center rounded-t-xl ${
                         isDrawerActive ? "translate-y-0" : "translate-y-full"
-                    } transition-transform duration-500 gap-4 p-8`}
+                    } transition-transform duration-500 gap-4 px-4 py-6`}
                 >
-                    <div className="absolute w-12 h-2 bg-gray-300 rounded-lg my-2 top-0" />
+                    <div className="absolute w-12 h-2 bg-gray-300 rounded-lg my-2 top-0 drag" />
+                    <div className="w-full flex justify-center items-center">
+                        <div className="w-1/3"></div>
+                        <div className="w-1/3 text-nowrap text-center">
+                            add new task
+                        </div>
+                        <button
+                            className="w-1/3 text-end text-blue-500"
+                            onClick={() => {
+                                setDrawerActive(false);
+                            }}
+                        >
+                            cancel
+                        </button>
+                    </div>
                     <div className="w-full flex flex-col">
                         <label>title </label>
                         <input
@@ -72,7 +86,7 @@ export default function Drawer(props) {
                     <div className="w-full flex flex-col">
                         <label>description</label>
                         <textarea
-                            className="border-2 h-52"
+                            className="border-2 h-52 rounded-lg resize-none"
                             type="text"
                         ></textarea>
                     </div>
